@@ -1,9 +1,11 @@
 import { NextResponse } from 'next/server';
 import { createSupabaseServer } from '@/lib/supabase/server';
 
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001'
+
 async function triggerRiskScoring(examId: string) {
   try {
-    const response = await fetch('http://localhost:8001/scoring/calculate', {
+    const response = await fetch(`${NEXT_PUBLIC_API_URL}/scoring/calculate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
