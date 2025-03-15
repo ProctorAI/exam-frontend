@@ -3,7 +3,7 @@ import { createSupabaseServer } from '@/lib/supabase/server';
 
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001'
 
-async function triggerRiskScoring(examId: string) {
+async function triggerRiskScoring(testId: string) {
   try {
     const response = await fetch(`${NEXT_PUBLIC_API_URL}/scoring/calculate`, {
       method: 'POST',
@@ -11,7 +11,7 @@ async function triggerRiskScoring(examId: string) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        exam_id: examId,
+        test_id: testId,
         interval_seconds: 60, // 1-minute intervals
         window_size_seconds: 900 // 15-minute rolling window
       }),
@@ -44,13 +44,13 @@ export async function POST(request: Request) {
       type: log.type,
       data: log.data || {},
       created_at: new Date(log.timestamp).toISOString(),
-      user_id: log.userId, // Use the user ID from the request
-      exam_id: log.examId || null,
-      device_type: log.device_type || null,
-      screen_width: log.screen_width || null,
-      screen_height: log.screen_height || null,
-      window_width: log.window_width || null,
-      window_height: log.window_height || null,
+      user_id: log.user_id,
+      test_id: log.test_id,
+      device_type: log.device_type,
+      screen_width: log.screen_width,
+      screen_height: log.screen_height,
+      window_width: log.window_width,
+      window_height: log.window_height,
     }));
 
     // Store logs in the database
@@ -61,10 +61,10 @@ export async function POST(request: Request) {
       return new NextResponse("Database Error", { status: 500 });
     }
 
-    // If we have an exam ID, trigger risk scoring
-    const examId = formattedLogs[0]?.exam_id;
-    if (examId) {
-      await triggerRiskScoring(examId);
+    // If we have a test ID, trigger risk scoring
+    const testId = formattedLogs[0]?.test_id;
+    if (testId) {
+      await triggerRiskScoring(testId);
     }
 
     return NextResponse.json({ success: true });
