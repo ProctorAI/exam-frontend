@@ -38,7 +38,7 @@ const navigationItems = [
 
   {
     title: "My Performance",
-    href: "/performance",
+    href: "/results",
     icon: LineChart,
     description: "Track your progress",
   },

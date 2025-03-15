@@ -3,7 +3,7 @@ import { createSupabaseServer } from '@/lib/supabase/server';
 
 async function triggerRiskScoring(examId: string) {
   try {
-    const response = await fetch('http://localhost:8001/api/v1/scoring/calculate', {
+    const response = await fetch('http://localhost:8001/scoring/calculate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

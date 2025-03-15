@@ -3,13 +3,13 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from "@/components/global/theme-provider"
 import QueryProvider from "@/components/global/query-provider";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ProctorAI',
-  description: 'ProctorAI',
+  title: 'TGBH Exam Platform',
+  description: 'A modern exam platform for TGBH',
 }
 
 export default function RootLayout({

@@ -21,7 +21,7 @@ export default function DashboardLayout({
     <SidebarInset>
         <Breadcrumbs />
         {/* <Header /> */}
-        <main className="flex-1 container mx-auto py-6">
+        <main className="flex-1 container mx-auto p-6">
         {children}
       </main>
     </SidebarInset>

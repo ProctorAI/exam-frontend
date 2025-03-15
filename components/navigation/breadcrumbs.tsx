@@ -22,9 +22,13 @@ const routes = {
     name: "Dashboard",
     path: "/dashboard",
   },
-  "/exams": {
-    name: "Exams",
-    path: "/exams",
+  "/tests": {
+    name: "Tests",
+    path: "/tests",
+  },
+  "/results": {
+    name: "Results",
+    path: "/results",
   },
 }
 
