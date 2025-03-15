@@ -7,7 +7,6 @@ import {
   LineChart,
   Settings,
   Brain,
-  Shield,
 } from "lucide-react"
 import {
   Sidebar,
@@ -22,19 +21,27 @@ import { cn } from "@/lib/utils"
 import { NavProfile } from "@/components/navigation/nav-profile";
 import useUser from "@/hooks/use-user";
 
+
 const navigationItems = [
   {
     title: "Dashboard",
     href: "/dashboard",
     icon: LayoutDashboard,
-    description: "Overview of all examinations",
+    description: "Overview of your progress",
   },
   {
-    title: "Active Exams",
-    href: "/exams",
-    icon: Shield,
-    description: "Monitor ongoing examinations",
-  }
+    title: "Tests",
+    href: "/tests",
+    icon: GraduationCap,
+    description: "Take and review tests",
+  },
+
+  {
+    title: "My Performance",
+    href: "/performance",
+    icon: LineChart,
+    description: "Track your progress",
+  },
 ]
 
 const settingsItems = [
@@ -72,7 +79,7 @@ export function AppSidebar() {
       <SidebarContent className="bg-gradient-to-b from-background/80 to-background/20 dark:from-background/60 dark:to-background/0">
         <div className="space-y-4 py-4">
           <NavSection 
-            label="Monitoring"
+            label="Navigation"
             items={navigationItems}
           />
           <NavSection 
